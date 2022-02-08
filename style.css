@@ -1,0 +1,60 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'roboto', sans-serif;
+}
+
+/* HEADER */
+header {
+    width: 100%;
+    height: 80px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    padding-left: 22px;
+    padding-right: 22px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+header img:first-child {
+    width: 75px;
+    height: 53px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+header img:last-child {
+    width: 42px;
+    height: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* FOOTER */
+footer {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+}
+input[type=text] {
+    width: 100%;
+    padding-right: 50%;
+    background-image: url(img/paperPlane.png);
+    background-position-x: 95%;
+    background-position-y: 50%;
+    background-size: 26px;
+    background-repeat: no-repeat;
+    padding-right: 13.6%;
+    padding-left: 17px;
+    border: none;
+    font-size: 400;
+    font-style: italic;  
+}
+::-webkit-input-placeholder {
+    color: black;
+}
