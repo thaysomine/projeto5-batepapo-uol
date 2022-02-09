@@ -13,19 +13,60 @@
     <title>Batepapo Uol</title>
 </head>
 
-<body>
+<body>   
+
+    <main>
+        <header>
+            <img src="img/logoUol.png" alt="logoUol">
+            <img onclick="showSideBar()" src="img/VectorPeople.png" alt="contacts buttom">
+        </header>
+
+        <article  onclick="unShowSideBar()">
+            <div class="chat">
+                <div class="time">(09:21:45)</div>
+                <div class="message">Joã entou na sala</div>
+            </div>
+            <div class="chat connected">
+                <div class="time">(09:21:45)</div>
+                <div class="message">Joã entou na sala</div>
+            </div>
+            <div class="chat private">
+                <div class="time">(09:21:45)</div>
+                <div class="message">Joã entou na sala</div>
+            </div>
+        </article>
+
+        <footer>
+            <input type="text" name="input" placeholder="Escreva aqui...">
+        </footer>
+    </main>
+
+    <aside class="hidden">
+            <p>Escolha um contato <br> para enviar mensagem:</p>
+            <div class="all">
+                <img src="img/VectorPeople.png" alt="Contacts">
+                <p>Todos</p>
+            </div>
+            <div class="contact-one">
+                <img src="img/profile.png" alt="Person">
+                <p>João</p>
+            </div>
+            <div class="contact-two">
+                <img src="img/profile.png" alt="Person">
+                <p>Maria</p>
+            </div>
+            <p>Escolha a visibilidade:</p>
+            <div class="unlock">
+                <img src="img/unlock.png" alt="unlock">
+                <p>Público</p>
+            </div>
+            <div class="lock">
+                <img src="img/lock.png" alt="lock">
+                <p>Reservadamente</p>
+            </div>
+    </aside>
+
     
-    <header>
-        <img src="img/logoUol.png" alt="logoUol">
-        <img src="img/VectorPeople.png" alt="profile buttom">
-    </header>
-
-    <main></main>
-
-    <footer>
-        <input type="text" name="input" placeholder="Escreva aqui...">
-    </footer>
-
 </body>
 
 

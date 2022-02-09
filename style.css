@@ -3,12 +3,24 @@ body {
     height: 100vh;
     font-family: 'roboto', sans-serif;
 }
+main {
+    width: 100%;
+    height: 100%;
+    background-color: #F3F3F3;
+}
+.bright {
+    filter: brightness(60%);
+}
+.hidden {
+    display: none;
+}
 
 /* HEADER */
 header {
     width: 100%;
     height: 80px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    background-color: #FFFFFF;
     display: flex;
     justify-content: space-between;
     padding-left: 22px;
@@ -29,6 +41,42 @@ header img:last-child {
     height: 30px;
     margin-top: auto;
     margin-bottom: auto;
+}
+
+/* ARTICLE */
+article {
+    padding-top: 106px;
+    width: 100%;
+    height: 100%;
+}
+.chat {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 4px;
+    border-radius: 2px;
+    background-color: #FFFFFF;
+}
+.time {
+    margin-left: 8px;
+    margin-right: 8px;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: normal;
+    color: #AAAAAA;
+}
+.message {
+    margin-right: 8px;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: normal;
+}
+.connected {
+    background-color: #DCDCDC;
+}
+.private {
+    background-color: #FFDEDE;
 }
 
 /* FOOTER */
@@ -52,9 +100,56 @@ input[type=text] {
     padding-right: 13.6%;
     padding-left: 17px;
     border: none;
-    font-size: 400;
-    font-style: italic;  
 }
 ::-webkit-input-placeholder {
     color: black;
+    font-size: 400;
+    font-style: italic;  
+    font-size: 18px;
+    line-height: 21px;
+}
+
+/* ASIDE */
+aside {
+    width: 259px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    background-color: #FFFFFF;
+}
+aside p {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    align-items: center;
+    text-align: center;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    color: #000000;
+}
+aside div {
+    display: flex;
+    margin-top: 15px;
+    margin-left: 18px;
+}
+aside div p {
+    font-weight: normal;
+    margin-left: 8px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.all img {
+    width: 23px;
+    height: 17px;
+}
+.contact-one img, .contact-two img {
+    width: 20px;
+    height: 20px;
+}
+.unlock img, .unlock img {
+    width: 15.5px;
+    height: 20px;
 }
