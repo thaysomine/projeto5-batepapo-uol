@@ -47,26 +47,31 @@
 
     <aside class="hidden">
             <p>Escolha um contato <br> para enviar mensagem:</p>
-            <div class="all">
+            <div onclick="receiver (this)" class="all">
                 <img src="img/VectorPeople.png" alt="Contacts">
                 <p>Todos</p>
+                <img src="img/checkmark.svg" alt="" class="check hidden">
             </div>
-            <div class="contact-one">
+            <div onclick="receiver (this)" class="contact-one">
                 <img src="img/profile.png" alt="Person">
                 <p>João</p>
+                <img src="img/checkmark.svg" alt="" class="check hidden">
             </div>
-            <div class="contact-two">
+            <div onclick="receiver (this)" class="contact-two">
                 <img src="img/profile.png" alt="Person">
                 <p>Maria</p>
+                <img src="img/checkmark.svg" alt="" class="check hidden">
             </div>
             <p>Escolha a visibilidade:</p>
-            <div class="unlock">
+            <div onclick="typeMessage(this)" class="unlock">
                 <img src="img/unlock.png" alt="unlock">
                 <p>Público</p>
+                <img src="img/checkmark.svg" alt="" class="check hidden">
             </div>
-            <div class="lock">
+            <div onclick="typeMessage(this)" class="lock">
+                <img src="img/checkmark.svg" alt="" class="check hidden">
                 <img src="img/lock.png" alt="lock">
-                <p>Reservadamente</p>
+                <p>Reservadamente</p>             
             </div>
     </aside>
 

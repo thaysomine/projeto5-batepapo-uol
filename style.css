@@ -137,6 +137,7 @@ aside div {
     display: flex;
     margin-top: 15px;
     margin-left: 18px;
+    position: relative;
 }
 aside div p {
     font-weight: normal;
@@ -155,4 +156,12 @@ aside div p {
 .unlock img, .unlock img {
     width: 15.5px;
     height: 20px;
+}
+img.check {
+    width: 20px;
+    height: 20px;
+}
+.check {
+    position: absolute;
+    right: 25px;
 }
