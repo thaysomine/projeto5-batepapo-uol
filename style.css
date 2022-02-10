@@ -2,6 +2,7 @@ body {
     width: 100vw;
     height: 100vh;
     font-family: 'roboto', sans-serif;
+    background-color: #F3F3F3;
 }
 main {
     width: 100%;
@@ -88,18 +89,20 @@ footer {
     bottom: 0;
     z-index: 1;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+    background-color: #FFFFFF;
 }
 input[type=text] {
     width: 100%;
     padding-right: 50%;
-    background-image: url(img/paperPlane.png);
-    background-position-x: 95%;
-    background-position-y: 50%;
-    background-size: 26px;
-    background-repeat: no-repeat;
-    padding-right: 13.6%;
     padding-left: 17px;
     border: none;
+}
+footer img {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: 25px;
+    right: 18px;
 }
 ::-webkit-input-placeholder {
     color: black;
