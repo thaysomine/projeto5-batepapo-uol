@@ -1,5 +1,6 @@
 let contact = null;
 let mode = null;
+let messages = [];
 // função para abrir barra lateral
 function showSideBar() {
     document.querySelector("aside").classList.remove("hidden")
@@ -15,7 +16,6 @@ function unShowSideBar() {
 // função para adicionar mensagens
 function sendMessage () {
     const input = document.querySelector("footer input").value;
-
     const ul = document.querySelector("ul");
     ul.innerHTML += `
             <li>
@@ -45,5 +45,31 @@ function typeMessage(typeOption) {
 
     mode = typeOption;
     mode.querySelector("aside .check").classList.remove("hidden");
+}
+// função para buscar msgs no server a cada 3 segundos
+setInterval(messageServer,3000);
+// função para buscar mensagens no servidor 
+function messageServer () {
+    const promisse = axios.get("https://mock-api.driven.com.br/api/v4/uol/messages");
+    promisse.then(promisseDelivered)
+}
+// função para buscar mensagens no servidor 
+function promisseDelivered(reply) {
+    messages = reply.data;
+    console.log(messages);
+    const ul = document.querySelector("ul");
+    ul.innerHTML = "";
+
+    for (let i=0; i< messages.length; i++) {
+        console.log(messages[i].data);
+        ul.innerHTML += `
+        <li>
+            <div class="chat">
+                <div class="time">(${messages[i].time})</div>
+                <div class="message">${messages[i].from} para ${messages[i].to}: ${messages[i].text}</div>
+            </div>
+        </li>
+    `;
+    }
 }
 
