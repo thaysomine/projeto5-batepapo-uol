@@ -13,6 +13,9 @@ function login() {
 login();
 // função caso nome do usuario esteja disponível
 function validUser(loginUser) {
+    setInterval(function() {
+        axios.post("https://mock-api.driven.com.br/api/v4/uol/status", {name : user});
+    },5000)
     console.log(loginUser);
 }
 // função caso ja tenha um usuário cadastrado com esse nome 
@@ -88,6 +91,11 @@ function promisseDelivered(reply) {
         }
     }
 }
+
+
+
+
+                                        /* --BONUS-- */
 // função para abrir barra lateral
 function showSideBar() {
     document.querySelector("aside").classList.remove("hidden")
