@@ -2,6 +2,8 @@ let contact = null;
 let mode = null;
 let messages = [];
 let user = null;
+let comparatorOne = null;
+let comparatorTwo = null;
 
 // função para entrar na sala
 function login() {
@@ -27,20 +29,21 @@ function invalidUser(error) {
 // função para adicionar mensagens
 function sendMessage () {
     const input = document.querySelector("footer input").value;
+    console.log(input);
     const promisse = axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", { from : user, to : "Todos", text : input, type : "message"});
     promisse.then(serverResponseSucess);
     promisse.catch(serverResponseFailed);
 }
 // função caso servidor responda com sucesso
 function serverResponseSucess(messageSucess) {
+    document.querySelector("footer input").value = " ";
     messageServer();
-    console.log(messageSucess);
 }
 // função caso servidor responda com erro
 function serverResponseFailed(messageFailed) {
     console.log(messageFailed.response);
     alert("Usuario deslogado");
-    login();
+    window.location.reload(true);
 }
 // função para buscar msgs no server a cada 3 segundos
 setInterval(messageServer,3000);
@@ -90,8 +93,31 @@ function promisseDelivered(reply) {
         `;
         }
     }
+    comparator();
 }
-
+// função para ver se tem mensagem nova
+function comparator() {
+    if (comparatorOne === null) {
+        comparatorOne = messages[99];
+    } else
+    if (comparatorOne !== null && comparatorTwo === null) {
+        comparatorTwo = messages[99];
+    } else
+    if (comparatorOne !== null && comparatorTwo !== null) {
+        checkEquallity ();
+    }
+}
+// função para verificar igualdade acima
+function checkEquallity() {
+    // caso tenha msg nova scrolar pra baixo
+    if (comparatorOne !== comparatorTwo) {
+        let saveValue = comparatorTwo;
+        comparatorOne = saveValue;
+        comparatorTwo = null;
+        const scrollDown = document.querySelector('.box');
+        scrollDown.scrollIntoView();
+    } 
+}
 
 
 
