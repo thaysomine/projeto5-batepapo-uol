@@ -1,50 +1,43 @@
 let contact = null;
 let mode = null;
 let messages = [];
-// função para abrir barra lateral
-function showSideBar() {
-    document.querySelector("aside").classList.remove("hidden")
-    document.querySelector("main").classList.add("bright");
+let user = null;
+
+// função para entrar na sala
+function login() {
+    user = prompt("Insira nome de usuario");
+    const promisse = axios.post("https://mock-api.driven.com.br/api/v4/uol/participants", {name : user});
+    promisse.then(validUser);
+    promisse.catch(invalidUser);
 }
-// função para fechar a barra lateral
-function unShowSideBar() {
-    if (document.querySelector("main").classList.contains("bright")) {
-        document.querySelector("aside").classList.add("hidden")
-        document.querySelector("main").classList.remove("bright");
-    }
+login();
+// função caso nome do usuario esteja disponível
+function validUser(loginUser) {
+    console.log(loginUser);
+}
+// função caso ja tenha um usuário cadastrado com esse nome 
+function invalidUser(error) {
+    console.log(error.response);
+    alert("Nome indisponível, tente outro.");
+    login();
 }
 // função para adicionar mensagens
 function sendMessage () {
     const input = document.querySelector("footer input").value;
-    const ul = document.querySelector("ul");
-    ul.innerHTML += `
-            <li>
-                <div class="chat">
-                    <div class="time">(09:21:45)</div>
-                    <div class="message">${input}</div>
-                </div>
-            </li>
-        `;
-    input.value = "";
-    console.log(input);
+    const promisse = axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", { from : user, to : "Todos", text : input, type : "message"});
+    promisse.then(serverResponseSucess);
+    promisse.catch(serverResponseFailed);
 }
-// função para escolher destinatario da mensagem 
-function receiver (receiverOption) {
-    if(contact !== null) {
-        contact.querySelector("aside .check").classList.add("hidden");
-    }
-
-    contact = receiverOption;
-    contact.querySelector("aside .check").classList.remove("hidden");
+// função caso servidor responda com sucesso
+function serverResponseSucess(messageSucess) {
+    messageServer();
+    console.log(messageSucess);
 }
-// função para escolher entre mensagem publica ou privada
-function typeMessage(typeOption) {
-    if(mode !== null) {
-        mode.querySelector("aside .check").classList.add("hidden");
-    }
-
-    mode = typeOption;
-    mode.querySelector("aside .check").classList.remove("hidden");
+// função caso servidor responda com erro
+function serverResponseFailed(messageFailed) {
+    console.log(messageFailed.response);
+    alert("Usuario deslogado");
+    login();
 }
 // função para buscar msgs no server a cada 3 segundos
 setInterval(messageServer,3000);
@@ -95,22 +88,33 @@ function promisseDelivered(reply) {
         }
     }
 }
-// função para entrar na sala
-function login() {
-    let user = prompt("Insira nome de usuario");
-    const promisse = axios.post("https://mock-api.driven.com.br/api/v4/uol/participants", {name : user});
-    promisse.then(validUser);
-    promisse.catch(invalidUser);
+// função para abrir barra lateral
+function showSideBar() {
+    document.querySelector("aside").classList.remove("hidden")
+    document.querySelector("main").classList.add("bright");
 }
-login();
-// função caso nome do usuario esteja disponível
-function validUser(loginUser) {
-    console.log(loginUser);
+// função para fechar a barra lateral
+function unShowSideBar() {
+    if (document.querySelector("main").classList.contains("bright")) {
+        document.querySelector("aside").classList.add("hidden")
+        document.querySelector("main").classList.remove("bright");
+    }
 }
-// função caso ja tenha um usuário cadastrado com esse nome 
-function invalidUser(error) {
-    console.log(error.response);
-    alert("Nome indisponível, tente outro.");
-    login();
-}
+// função para escolher destinatario da mensagem 
+function receiver (receiverOption) {
+    if(contact !== null) {
+        contact.querySelector("aside .check").classList.add("hidden");
+    }
 
+    contact = receiverOption;
+    contact.querySelector("aside .check").classList.remove("hidden");
+}
+// função para escolher entre mensagem publica ou privada
+function typeMessage(typeOption) {
+    if(mode !== null) {
+        mode.querySelector("aside .check").classList.add("hidden");
+    }
+
+    mode = typeOption;
+    mode.querySelector("aside .check").classList.remove("hidden");
+}
