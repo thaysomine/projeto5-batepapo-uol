@@ -135,12 +135,14 @@ function checkEquallity() {
 function showSideBar() {
     document.querySelector("aside").classList.remove("hidden")
     document.querySelector("main").classList.add("bright");
+    document.querySelector("main").classList.add("overflow-hidden");
 }
 // função para fechar a barra lateral
 function unShowSideBar() {
     if (document.querySelector("main").classList.contains("bright")) {
         document.querySelector("aside").classList.add("hidden")
         document.querySelector("main").classList.remove("bright");
+        document.querySelector("main").classList.remove("overflow-hidden");
     }
 }
 // função para escolher destinatario da mensagem 
