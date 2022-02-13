@@ -65,7 +65,7 @@ function promisseDelivered(reply) {
             <li>
                 <div class="chat">
                     <div class="time">(${messages[i].time})</div>
-                    <div class="message"><b>${messages[i].from}</b> para <b>${messages[i].to}</b>: ${messages[i].text}</div>
+                    <div class="message" data-identifier="message"><b>${messages[i].from}</b> para <b>${messages[i].to}</b>: ${messages[i].text}</div>
                 </div>
             </li>
         `;
@@ -76,18 +76,28 @@ function promisseDelivered(reply) {
             <li>
                 <div class="chat connected">
                     <div class="time">(${messages[i].time})</div>
-                    <div class="message"><b>${messages[i].from}</b> ${messages[i].text}</div>
+                    <div class="message" data-identifier="message"><b>${messages[i].from}</b> ${messages[i].text}</div>
                 </div>
             </li>
         `;
         }
         //caso tipo mensagem reservada
-        else {
+        else if (messages[i].to === user || messages[i].from === user ) {
             ul.innerHTML += `
             <li>
                 <div class="chat private">
                 <div class="time">(${messages[i].time})</div>
-                <div class="message"><b>${messages[i].from}</b> reservadamente para <b>${messages[i].to}</b>: ${messages[i].text}</div>
+                <div class="message" data-identifier="message"><b>${messages[i].from}</b> reservadamente para <b>${messages[i].to}</b>: ${messages[i].text}</div>
+                </div>
+            </li>
+        `;
+        }
+        else {
+            ul.innerHTML += `
+            <li>
+                <div class="hidden">
+                <div class="time">(${messages[i].time})</div>
+                <div class="message" data-identifier="message"><b>${messages[i].from}</b> reservadamente para <b>${messages[i].to}</b>: ${messages[i].text}</div>
                 </div>
             </li>
         `;
@@ -98,12 +108,10 @@ function promisseDelivered(reply) {
 // função para ver se tem mensagem nova
 function comparator() {
     if (comparatorOne === null) {
-        comparatorOne = messages[99];
+        comparatorOne = messages[99].from+messages[99].to+messages[99].time+messages[99].text;
     } else
     if (comparatorOne !== null && comparatorTwo === null) {
-        comparatorTwo = messages[99];
-    } else
-    if (comparatorOne !== null && comparatorTwo !== null) {
+        comparatorTwo = messages[99].from+messages[99].to+messages[99].time+messages[99].text;
         checkEquallity ();
     }
 }
@@ -111,12 +119,13 @@ function comparator() {
 function checkEquallity() {
     // caso tenha msg nova scrolar pra baixo
     if (comparatorOne !== comparatorTwo) {
-        let saveValue = comparatorTwo;
-        comparatorOne = saveValue;
-        comparatorTwo = null;
         const scrollDown = document.querySelector('.box');
         scrollDown.scrollIntoView();
+        console.log(comparatorOne);
+        console.log(comparatorTwo);
     } 
+    comparatorOne = comparatorTwo;
+    comparatorTwo = null;
 }
 
 
