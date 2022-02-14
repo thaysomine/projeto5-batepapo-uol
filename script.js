@@ -6,11 +6,10 @@ let user = null;
 let comparatorOne = null;
 let comparatorTwo = null;
 
-//função para envia usuário na tecla enter
+//função para enviar usuário na tecla enter
 document.querySelector(".login input").addEventListener("keyup", enterKeyPressedLogin);
 function enterKeyPressedLogin(event) {
     if (event.keyCode == 13) {
-        console.log("Enter key is pressed");
         login();
         return true;
     } else {
@@ -25,17 +24,15 @@ function login() {
     promisse.catch(invalidUser);
 }
 // função caso nome do usuario esteja disponível
-function validUser(loginUser) {
+function validUser() {
     document.querySelector(".login").classList.add("hidden");
     document.querySelector("main").classList.remove("hidden");
     setInterval(function() {
         axios.post("https://mock-api.driven.com.br/api/v4/uol/status", {name : user});
     },5000)
-    console.log(loginUser);
 }
 // função caso ja tenha um usuário cadastrado com esse nome 
-function invalidUser(error) {
-    console.log(error.response);
+function invalidUser() {
     alert("Nome indisponível, tente outro.");
     window.location.reload(true);
 }
@@ -43,7 +40,6 @@ function invalidUser(error) {
 document.querySelector("footer input").addEventListener("keyup", enterKeyPressedMessage);
 function enterKeyPressedMessage(event) {
     if (event.keyCode == 13) {
-        console.log("Enter key is pressed");
         sendMessage();
         return true;
     } else {
@@ -53,7 +49,6 @@ function enterKeyPressedMessage(event) {
 // função para adicionar mensagens
 function sendMessage () {
     const input = document.querySelector("footer input").value;
-    console.log(input);
     if (input !== "") {
         const promisse = axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", { from : user, to : "Todos", text : input, type : "message"});
         promisse.then(serverResponseSucess);
@@ -66,8 +61,7 @@ function serverResponseSucess() {
     messageServer();
 }
 // função caso servidor responda com erro
-function serverResponseFailed(messageFailed) {
-    console.log(messageFailed.response);
+function serverResponseFailed() {
     alert("Usuario deslogado");
     window.location.reload(true);
 }
@@ -147,8 +141,6 @@ function checkEquallity() {
     if (comparatorOne !== comparatorTwo) {
         const scrollDown = document.querySelector('.box');
         scrollDown.scrollIntoView();
-        console.log(comparatorOne);
-        console.log(comparatorTwo);
     } 
     comparatorOne = comparatorTwo;
     comparatorTwo = null;

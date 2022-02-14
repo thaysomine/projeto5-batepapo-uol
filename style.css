@@ -166,3 +166,7 @@ footer ::-webkit-input-placeholder {
     padding-top: 10px;
     box-sizing: border-box;
 }
+textarea:focus, input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
