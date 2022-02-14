@@ -1,20 +1,34 @@
 let contact = null;
 let mode = null;
 let messages = [];
+let participants = [];
 let user = null;
 let comparatorOne = null;
 let comparatorTwo = null;
 
+//tentar algo aqui
+document.querySelector(".login input").addEventListener("keyup", enterKeyPressed);
+function enterKeyPressed(event) {
+    if (event.keyCode == 13) {
+        console.log("Enter key is pressed");
+        login();
+        return true;
+    } else {
+        return false;
+    }
+}
+
 // função para entrar na sala
 function login() {
-    user = prompt("Insira nome de usuario");
+    user = document.querySelector(".login input").value;
     const promisse = axios.post("https://mock-api.driven.com.br/api/v4/uol/participants", {name : user});
     promisse.then(validUser);
     promisse.catch(invalidUser);
 }
-login();
 // função caso nome do usuario esteja disponível
 function validUser(loginUser) {
+    document.querySelector(".login").classList.add("hidden");
+    document.querySelector("main").classList.remove("hidden");
     setInterval(function() {
         axios.post("https://mock-api.driven.com.br/api/v4/uol/status", {name : user});
     },5000)
@@ -55,7 +69,7 @@ function messageServer () {
 // função para buscar mensagens no servidor 
 function promisseDelivered(reply) {
     messages = reply.data;
-    const ul = document.querySelector("ul");
+    const ul = document.querySelector("article ul");
     ul.innerHTML = "";
 
     for (let i=0; i< messages.length; i++) {
@@ -126,40 +140,4 @@ function checkEquallity() {
     } 
     comparatorOne = comparatorTwo;
     comparatorTwo = null;
-}
-
-
-
-                                        /* --BONUS-- */
-// função para abrir barra lateral
-function showSideBar() {
-    document.querySelector("aside").classList.remove("hidden")
-    document.querySelector("main").classList.add("bright");
-    document.querySelector("main").classList.add("overflow-hidden");
-}
-// função para fechar a barra lateral
-function unShowSideBar() {
-    if (document.querySelector("main").classList.contains("bright")) {
-        document.querySelector("aside").classList.add("hidden")
-        document.querySelector("main").classList.remove("bright");
-        document.querySelector("main").classList.remove("overflow-hidden");
-    }
-}
-// função para escolher destinatario da mensagem 
-function receiver (receiverOption) {
-    if(contact !== null) {
-        contact.querySelector("aside .check").classList.add("hidden");
-    }
-
-    contact = receiverOption;
-    contact.querySelector("aside .check").classList.remove("hidden");
-}
-// função para escolher entre mensagem publica ou privada
-function typeMessage(typeOption) {
-    if(mode !== null) {
-        mode.querySelector("aside .check").classList.add("hidden");
-    }
-
-    mode = typeOption;
-    mode.querySelector("aside .check").classList.remove("hidden");
 }

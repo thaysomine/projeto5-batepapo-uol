@@ -16,13 +16,19 @@
 <body> 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>  
 
-    <main>
+    <div class="login">
+        <img src="img/logo 2.png" alt="logoUol">
+        <div class="input-name"><input type="text" placeholder="Digite seu nome"></div>
+        <div class="login-chat" onclick="login()"><p>Entrar</p></div>
+    </div>
+
+    <main class="hidden">
         <header>
             <img src="img/logoUol.png" alt="logoUol">
-            <img onclick="showSideBar()" src="img/VectorPeople.png" alt="contacts buttom">
+            <img src="img/VectorPeople.png" alt="contacts buttom">
         </header>
 
-        <article  onclick="unShowSideBar()">
+        <article>
             
             <ul></ul>
             <div class="box"></div><div class="box"></div>
@@ -35,36 +41,6 @@
             <img onclick="sendMessage()" src="img/paperPlane.png" alt="send message">
         </footer>
     </main>
-
-    <aside class="hidden">
-            <p>Escolha um contato <br> para enviar mensagem:</p>
-            <div onclick="receiver (this)" class="all">
-                <img src="img/VectorPeople.png" alt="Contacts">
-                <p>Todos</p>
-                <img src="img/checkmark.svg" alt="" class="check hidden">
-            </div>
-            <div onclick="receiver (this)" class="contact-one">
-                <img src="img/profile.png" alt="Person">
-                <p>João</p>
-                <img src="img/checkmark.svg" alt="" class="check hidden">
-            </div>
-            <div onclick="receiver (this)" class="contact-two">
-                <img src="img/profile.png" alt="Person">
-                <p>Maria</p>
-                <img src="img/checkmark.svg" alt="" class="check hidden">
-            </div>
-            <p>Escolha a visibilidade:</p>
-            <div onclick="typeMessage(this)" class="unlock">
-                <img src="img/unlock.png" alt="unlock">
-                <p>Público</p>
-                <img src="img/checkmark.svg" alt="" class="check hidden">
-            </div>
-            <div onclick="typeMessage(this)" class="lock">
-                <img src="img/checkmark.svg" alt="" class="check hidden">
-                <img src="img/lock.png" alt="lock">
-                <p>Reservadamente</p>             
-            </div>
-    </aside>
 
     <script src="script.js"></script>
     

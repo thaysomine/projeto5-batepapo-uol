@@ -9,14 +9,8 @@ main {
     height: 100%;
     background-color: #F3F3F3;
 }
-.bright {
-    filter: brightness(60%);
-}
 .hidden {
     display: none;
-}
-.overflow-hidden {
-    overflow-y: hidden;
 }
 
 /* HEADER */
@@ -99,7 +93,7 @@ footer {
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
     background-color: #FFFFFF;
 }
-input[type=text] {
+footer input[type=text] {
     width: 100%;
     padding-right: 50%;
     padding-left: 17px;
@@ -112,7 +106,7 @@ footer img {
     top: 25px;
     right: 18px;
 }
-::-webkit-input-placeholder {
+footer ::-webkit-input-placeholder {
     color: black;
     font-size: 400;
     font-style: italic;  
@@ -120,56 +114,55 @@ footer img {
     line-height: 21px;
 }
 
-/* ASIDE */
-aside {
-    width: 259px;
+/* LOGIN */
+.login {
+    width: 100%;
     height: 100%;
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    background-color: #FFFFFF;
-}
-aside p {
-    font-family: Roboto;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 19px;
-    align-items: center;
+    background-color: rgb(255, 255, 255);
     text-align: center;
-    margin-top: 24px;
-    margin-bottom: 24px;
-    color: #000000;
 }
-aside div {
-    display: flex;
-    margin-top: 15px;
-    margin-left: 18px;
-    position: relative;
+.login img {
+    width: 130px;
+    height: 92px;
+    margin-top: 72px;
+    margin-bottom: 94px;
 }
-aside div p {
+.input-name {
+    width: 260px;
+    height: 54px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.input-name input {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #D7D7D7;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+.login ::-webkit-input-placeholder {
+    color: #AEAEAE;
+    font-style: normal;
+    font-size: 400; 
+    font-size: 18px;
+    line-height: 25px;
+}
+.login-chat {
+    width: 109px;
+    height: 45px;
+    background-color: #E7E7E7;
+    border-radius: 9px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;       
+}
+.login-chat p {
+    font-style: normal;
     font-weight: normal;
-    margin-left: 8px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
-.all img {
-    width: 23px;
-    height: 17px;
-}
-.contact-one img, .contact-two img {
-    width: 20px;
-    height: 20px;
-}
-.unlock img, .unlock img {
-    width: 15.5px;
-    height: 20px;
-}
-img.check {
-    width: 20px;
-    height: 20px;
-}
-.check {
-    position: absolute;
-    right: 25px;
+    font-size: 18px;
+    line-height: 25px;
+    color: #696969;
+    padding-top: 10px;
+    box-sizing: border-box;
 }
