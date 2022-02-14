@@ -20,16 +20,23 @@ function enterKeyPressedLogin(event) {
 function login() {
     user = document.querySelector(".login input").value;
     const promisse = axios.post("https://mock-api.driven.com.br/api/v4/uol/participants", {name : user});
-    promisse.then(validUser);
+    document.querySelector(".input-name").classList.add("hidden");
+    document.querySelector(".login-chat").classList.add("hidden");
+    document.querySelector(".loadDots").classList.remove("hidden");
+    document.querySelector(".loading").classList.remove("hidden");
+    promisse.then(loadingScreen);
     promisse.catch(invalidUser);
 }
 // função caso nome do usuario esteja disponível
-function validUser() {
-    document.querySelector(".login").classList.add("hidden");
-    document.querySelector("main").classList.remove("hidden");
+function loadingScreen() {
+    setTimeout(validUser,3000);
     setInterval(function() {
         axios.post("https://mock-api.driven.com.br/api/v4/uol/status", {name : user});
     },5000)
+}
+function validUser() {
+    document.querySelector(".login").classList.add("hidden");
+    document.querySelector("main").classList.remove("hidden");
 }
 // função caso ja tenha um usuário cadastrado com esse nome 
 function invalidUser() {
