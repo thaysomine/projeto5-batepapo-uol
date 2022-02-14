@@ -6,7 +6,7 @@ let user = null;
 let comparatorOne = null;
 let comparatorTwo = null;
 
-//tentar algo aqui
+//função para envia usuário na tecla enter
 document.querySelector(".login input").addEventListener("keyup", enterKeyPressed);
 function enterKeyPressed(event) {
     if (event.keyCode == 13) {
@@ -17,7 +17,6 @@ function enterKeyPressed(event) {
         return false;
     }
 }
-
 // função para entrar na sala
 function login() {
     user = document.querySelector(".login input").value;
@@ -38,7 +37,7 @@ function validUser(loginUser) {
 function invalidUser(error) {
     console.log(error.response);
     alert("Nome indisponível, tente outro.");
-    login();
+    window.location.reload(true);
 }
 // função para adicionar mensagens
 function sendMessage () {
@@ -124,7 +123,7 @@ function comparator() {
     if (comparatorOne === null) {
         comparatorOne = messages[99].from+messages[99].to+messages[99].time+messages[99].text;
     } else
-    if (comparatorOne !== null && comparatorTwo === null) {
+    if (comparatorOne !== null && comparatorTwo === null && messages[99].type === "message") {
         comparatorTwo = messages[99].from+messages[99].to+messages[99].time+messages[99].text;
         checkEquallity ();
     }
