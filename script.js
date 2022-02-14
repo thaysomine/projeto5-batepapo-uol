@@ -7,8 +7,8 @@ let comparatorOne = null;
 let comparatorTwo = null;
 
 //função para envia usuário na tecla enter
-document.querySelector(".login input").addEventListener("keyup", enterKeyPressed);
-function enterKeyPressed(event) {
+document.querySelector(".login input").addEventListener("keyup", enterKeyPressedLogin);
+function enterKeyPressedLogin(event) {
     if (event.keyCode == 13) {
         console.log("Enter key is pressed");
         login();
@@ -39,17 +39,30 @@ function invalidUser(error) {
     alert("Nome indisponível, tente outro.");
     window.location.reload(true);
 }
+// função para enviar mensagens na tecla enter
+document.querySelector("footer input").addEventListener("keyup", enterKeyPressedMessage);
+function enterKeyPressedMessage(event) {
+    if (event.keyCode == 13) {
+        console.log("Enter key is pressed");
+        sendMessage();
+        return true;
+    } else {
+        return false;
+    }
+}
 // função para adicionar mensagens
 function sendMessage () {
     const input = document.querySelector("footer input").value;
     console.log(input);
-    const promisse = axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", { from : user, to : "Todos", text : input, type : "message"});
-    promisse.then(serverResponseSucess);
-    promisse.catch(serverResponseFailed);
+    if (input !== "") {
+        const promisse = axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", { from : user, to : "Todos", text : input, type : "message"});
+        promisse.then(serverResponseSucess);
+        promisse.catch(serverResponseFailed);
+    }
 }
 // função caso servidor responda com sucesso
-function serverResponseSucess(messageSucess) {
-    document.querySelector("footer input").value = " ";
+function serverResponseSucess() {
+    document.querySelector("footer input").value = "";
     messageServer();
 }
 // função caso servidor responda com erro
